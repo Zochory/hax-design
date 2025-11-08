@@ -40,6 +40,12 @@ export default function Home() {
           <div className="bg-muted/40 border rounded-md p-4 font-mono text-xs sm:text-sm overflow-x-auto">
             <code>{installCommand}</code>
           </div>
+          <div className="bg-muted/40 border rounded-md p-4 font-mono text-xs sm:text-sm overflow-x-auto">
+            <code>
+              npx shadcn@latest add{" "}
+              "https://v0.app/chat/b/b_u0MUwfPM9b6?token=eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIn0..Cbi3fNCo_7WvSwiy.pLiMhIkLWajtrwG9eWnA0zRs3gaONoXFAGTs-ZVPHFAGUxdmX_9ntnAJ_w4.z9H0bY3sr7Pxp9lCZKGC8g"
+            </code>
+          </div>
 
           <ul className="list-disc pl-5 space-y-2 text-sm text-muted-foreground">
             <li>Includes sidebar, floating toolbar, hooks, constants, and supporting utilities.</li>
