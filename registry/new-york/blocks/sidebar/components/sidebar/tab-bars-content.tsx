@@ -5,20 +5,20 @@ import { motion } from "motion/react";
 
 import { MenuButton } from "@/components/sidebar/menu-button";
 import { SearchIconButton } from "@/components/sidebar/search-icon-button";
-import { ToolbarTabItem } from "@/components/sidebar/toolbar-tab-item";
+import { TabBarsTabItem } from "@/components/sidebar/tab-bars-tab-item";
 import { UserAvatar } from "@/components/sidebar/user-avatar";
 import { EXPLORE_NAVIGATION, MAIN_NAVIGATION } from "@/lib/sidebar/navigation";
 import { STAGGER_DELAYS, STAGGER_DURATION, STAGGER_EASING } from "@/lib/sidebar/stagger";
 import { createStaggerDelay } from "@/lib/utils/animations";
 import { NavigationItemId } from "@/types/navigation";
 
-interface ToolbarContentProps {
+interface TabBarsContentProps {
   activeItem: NavigationItemId;
   onItemClick: (id: NavigationItemId) => void;
   onMenuClick: () => void;
 }
 
-export function ToolbarContent({ activeItem, onItemClick, onMenuClick }: ToolbarContentProps) {
+export function TabBarsContent({ activeItem, onItemClick, onMenuClick }: TabBarsContentProps) {
   const mainNavItems = useMemo(
     () => MAIN_NAVIGATION.filter((item) => item.id !== "settings" && item.id !== "search"),
     []
@@ -50,7 +50,7 @@ export function ToolbarContent({ activeItem, onItemClick, onMenuClick }: Toolbar
               ease: STAGGER_EASING.popIn,
             }}
           >
-            <ToolbarTabItem
+            <TabBarsTabItem
               label={item.label}
               isActive={activeItem === item.id}
               onClick={() => onItemClick(item.id)}
@@ -71,7 +71,7 @@ export function ToolbarContent({ activeItem, onItemClick, onMenuClick }: Toolbar
               ease: STAGGER_EASING.popIn,
             }}
           >
-            <ToolbarTabItem
+            <TabBarsTabItem
               label={item.label}
               isActive={activeItem === item.id}
               onClick={() => onItemClick(item.id)}
@@ -98,3 +98,4 @@ export function ToolbarContent({ activeItem, onItemClick, onMenuClick }: Toolbar
     </div>
   );
 }
+

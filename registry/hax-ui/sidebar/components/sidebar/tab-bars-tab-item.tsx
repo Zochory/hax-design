@@ -7,19 +7,19 @@ import { useTheme } from "@/components/theme/theme-provider";
 import { TRANSITIONS } from "@/lib/sidebar/animations";
 import { getColor } from "@/lib/sidebar/theme";
 
-interface ToolbarTabItemProps {
+interface TabBarsTabItemProps {
   label: string;
   isActive?: boolean;
   onClick?: () => void;
   layoutId?: string;
 }
 
-export const ToolbarTabItem = memo(function ToolbarTabItem({
+export const TabBarsTabItem = memo(function TabBarsTabItem({
   label,
   isActive = false,
   onClick,
   layoutId,
-}: ToolbarTabItemProps) {
+}: TabBarsTabItemProps) {
   const { theme } = useTheme();
   const isDark = theme === "dark";
 
@@ -40,7 +40,7 @@ export const ToolbarTabItem = memo(function ToolbarTabItem({
         ...TRANSITIONS.fast,
         scale: { type: "spring", stiffness: 400, damping: 25 },
       }}
-      data-testid={`toolbar-tab-${label.toLowerCase().replace(/\s+/g, "-")}`}
+      data-testid={`tab-bars-tab-${label.toLowerCase().replace(/\s+/g, "-")}`}
       data-active={isActive}
       title={label}
       type="button"
@@ -68,3 +68,4 @@ export const ToolbarTabItem = memo(function ToolbarTabItem({
     </motion.button>
   );
 });
+

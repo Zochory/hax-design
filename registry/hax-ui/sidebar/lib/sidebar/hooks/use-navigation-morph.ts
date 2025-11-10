@@ -4,7 +4,7 @@ import { useState, useEffect, useCallback } from "react";
 
 export function useNavigationMorph(contentSwitchDelay = 450) {
   const [isCollapsed, setIsCollapsed] = useState(false);
-  const [showToolbarContent, setShowToolbarContent] = useState(false);
+  const [showTabBarsContent, setShowTabBarsContent] = useState(false);
 
   const toggleCollapse = useCallback(() => {
     setIsCollapsed((prev) => !prev);
@@ -21,17 +21,17 @@ export function useNavigationMorph(contentSwitchDelay = 450) {
   useEffect(() => {
     if (isCollapsed) {
       const timer = setTimeout(() => {
-        setShowToolbarContent(true);
+        setShowTabBarsContent(true);
       }, contentSwitchDelay);
       return () => clearTimeout(timer);
     }
 
-    setShowToolbarContent(false);
+    setShowTabBarsContent(false);
   }, [isCollapsed, contentSwitchDelay]);
 
   return {
     isCollapsed,
-    showToolbarContent,
+    showTabBarsContent,
     toggleCollapse,
     collapse,
     expand,

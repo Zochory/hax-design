@@ -1,0 +1,1 @@
+Add a new component to the registry, the component has to have a name, and have its own container with its preview and the "Open with v0" button as well as the command "npx shadcn@latest add ..."

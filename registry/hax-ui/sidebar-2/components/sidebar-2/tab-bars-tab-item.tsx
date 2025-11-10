@@ -4,28 +4,28 @@ import { motion } from "motion/react";
 import { memo } from "react";
 
 import { useTheme } from "@/components/theme/theme-provider";
-import { TRANSITIONS } from "@/lib/sidebar/animations";
-import { getColor } from "@/lib/sidebar/theme";
+import { TRANSITIONS } from "@/lib/sidebar-2/animations";
+import { getColor } from "@/lib/sidebar-2/theme";
 
-interface ToolbarTabItemProps {
+interface TabBarsTabItemProps {
   label: string;
   isActive?: boolean;
   onClick?: () => void;
   layoutId?: string;
 }
 
-export const ToolbarTabItem = memo(function ToolbarTabItem({
+export const TabBarsTabItem = memo(function TabBarsTabItem({
   label,
   isActive = false,
   onClick,
   layoutId,
-}: ToolbarTabItemProps) {
+}: TabBarsTabItemProps) {
   const { theme } = useTheme();
   const isDark = theme === "dark";
 
   return (
     <motion.button
-      className="relative flex items-center justify-center cursor-pointer px-2 py-2 rounded-lg whitespace-nowrap"
+      className="relative flex items-center justify-center cursor-pointer py-2 whitespace-nowrap rounded-full px-3"
       onClick={onClick}
       whileHover={{ backgroundColor: isDark ? "rgba(255, 255, 255, 0.08)" : "rgba(0, 0, 0, 0.06)" }}
       whileTap={{ scale: 0.98 }}
@@ -40,7 +40,7 @@ export const ToolbarTabItem = memo(function ToolbarTabItem({
         ...TRANSITIONS.fast,
         scale: { type: "spring", stiffness: 400, damping: 25 },
       }}
-      data-testid={`toolbar-tab-${label.toLowerCase().replace(/\s+/g, "-")}`}
+      data-testid={`tab-bars-tab-${label.toLowerCase().replace(/\s+/g, "-")}`}
       data-active={isActive}
       title={label}
       type="button"
@@ -68,3 +68,4 @@ export const ToolbarTabItem = memo(function ToolbarTabItem({
     </motion.button>
   );
 });
+

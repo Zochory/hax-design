@@ -5,8 +5,8 @@ export const MORPH_TIMING = {
   sidebarExitDuration: 0.2,
   sidebarEnterDuration: 0.3,
   sidebarEnterDelay: 0.1,
-  toolbarEnterDuration: 0.25,
-  toolbarEnterDelay: 0,
+  tabBarsEnterDuration: 0.25,
+  tabBarsEnterDelay: 0,
   shadowDuration: 0.5,
   scaleDuration: 0.6,
 } as const;
@@ -38,9 +38,9 @@ export const MORPH_TRANSITION = {
     delay: MORPH_TIMING.sidebarEnterDelay,
     ease: [0, 0, 0.2, 1],
   } satisfies Transition,
-  toolbarContentEnter: {
-    duration: MORPH_TIMING.toolbarEnterDuration,
-    delay: MORPH_TIMING.toolbarEnterDelay,
+  tabBarsContentEnter: {
+    duration: MORPH_TIMING.tabBarsEnterDuration,
+    delay: MORPH_TIMING.tabBarsEnterDelay,
     ease: [0, 0, 0.2, 1],
   } satisfies Transition,
   scale: {

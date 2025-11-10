@@ -4,12 +4,12 @@ import { AnimatePresence, motion } from "motion/react";
 import { useState } from "react";
 
 import { FloatingLogo } from "@/components/sidebar/floating-logo";
-import { FloatingToolbar } from "@/components/sidebar/floating-toolbar";
+import { FloatingTabBars } from "@/components/sidebar/floating-tab-bars";
 import { SidebarFooter } from "@/components/sidebar/sidebar-footer";
 import { SidebarHeader } from "@/components/sidebar/sidebar-header";
 import { SidebarNav } from "@/components/sidebar/sidebar-nav";
 import { DEFAULT_ACTIVE_ITEM } from "@/lib/sidebar/navigation";
-import type { NavigationItemId } from "@/types/navigation";
+import { NavigationItemId } from "@/lib/sidebar/navigation";
 
 export function Sidebar() {
   const [activeItem, setActiveItem] = useState<NavigationItemId>(DEFAULT_ACTIVE_ITEM);
@@ -24,8 +24,8 @@ export function Sidebar() {
       {isCollapsed ? (
         <>
           <FloatingLogo key="logo" />
-          <FloatingToolbar
-            key="toolbar"
+          <FloatingTabBars
+            key="tab-bars"
             activeItem={activeItem}
             onItemClick={setActiveItem}
             onMenuClick={handleMenuClick}

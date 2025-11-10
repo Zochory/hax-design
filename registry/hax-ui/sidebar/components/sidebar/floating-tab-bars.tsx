@@ -6,18 +6,18 @@ import { useMemo } from "react";
 import { useTheme } from "@/components/theme/theme-provider";
 import { MenuButton } from "@/components/sidebar/menu-button";
 import { SearchIconButton } from "@/components/sidebar/search-icon-button";
-import { ToolbarTabItem } from "@/components/sidebar/toolbar-tab-item";
+import { TabBarsTabItem } from "@/components/sidebar/tab-bars-tab-item";
 import { UserAvatar } from "@/components/sidebar/user-avatar";
 import { EXPLORE_NAVIGATION, MAIN_NAVIGATION } from "@/lib/sidebar/navigation";
-import type { NavigationItemId } from "@/types/navigation";
+import { NavigationItemId } from "@/types/navigation";
 
-interface FloatingToolbarProps {
+interface FloatingTabBarsProps {
   activeItem: NavigationItemId;
   onItemClick: (id: NavigationItemId) => void;
   onMenuClick: () => void;
 }
 
-export function FloatingToolbar({ activeItem, onItemClick, onMenuClick }: FloatingToolbarProps) {
+export function FloatingTabBars({ activeItem, onItemClick, onMenuClick }: FloatingTabBarsProps) {
   const { theme } = useTheme();
   const isDark = theme === "dark";
 
@@ -27,7 +27,7 @@ export function FloatingToolbar({ activeItem, onItemClick, onMenuClick }: Floati
   );
 
   return (
-    <div className="fixed z-50 top-3 left-1/2 -translate-x-1/2" role="toolbar" aria-label="Main navigation toolbar">
+    <div className="fixed z-50 top-3 left-1/2 -translate-x-1/2" role="toolbar" aria-label="Main navigation tab bars">
       <motion.div
         initial={{ opacity: 0, scale: 0.96, y: -8 }}
         animate={{ opacity: 1, scale: 1, y: 0 }}
@@ -61,7 +61,7 @@ export function FloatingToolbar({ activeItem, onItemClick, onMenuClick }: Floati
 
           <nav className="flex items-center gap-1 rounded-[168px]" aria-label="Main navigation">
             {mainNavItems.map((item) => (
-              <ToolbarTabItem
+              <TabBarsTabItem
                 key={item.id}
                 label={item.label}
                 isActive={activeItem === item.id}
@@ -73,7 +73,7 @@ export function FloatingToolbar({ activeItem, onItemClick, onMenuClick }: Floati
 
           <nav className="flex items-center gap-1" aria-label="Explore navigation">
             {EXPLORE_NAVIGATION.map((item) => (
-              <ToolbarTabItem
+              <TabBarsTabItem
                 key={item.id}
                 label={item.label}
                 isActive={activeItem === item.id}
@@ -101,3 +101,4 @@ export function FloatingToolbar({ activeItem, onItemClick, onMenuClick }: Floati
     </div>
   );
 }
+

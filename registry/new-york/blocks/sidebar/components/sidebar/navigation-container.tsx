@@ -4,7 +4,7 @@ import { AnimatePresence, motion } from "motion/react";
 
 import { FloatingLogo } from "@/components/sidebar/floating-logo";
 import { SidebarContent } from "@/components/sidebar/sidebar-content";
-import { ToolbarContent } from "@/components/sidebar/toolbar-content";
+import { TabBarsContent } from "@/components/sidebar/tab-bars-content";
 import { useTheme } from "@/components/theme/theme-provider";
 import { MORPH_SCALE_VALUES, MORPH_TIMING, MORPH_TRANSITION } from "@/lib/sidebar/morph";
 import { useNavigationMorph } from "@/lib/sidebar/hooks/use-navigation-morph";
@@ -13,7 +13,7 @@ import { getShadow } from "@/lib/utils/animations";
 
 export function NavigationContainer() {
   const { activeItem, setActiveItem } = useNavigationState();
-  const { isCollapsed, showToolbarContent, toggleCollapse } = useNavigationMorph(MORPH_TIMING.contentSwitchDelay);
+  const { isCollapsed, showTabBarsContent, toggleCollapse } = useNavigationMorph(MORPH_TIMING.contentSwitchDelay);
   const { theme } = useTheme();
   const isDark = theme === "dark";
 
@@ -39,7 +39,7 @@ export function NavigationContainer() {
         }}
         transition={MORPH_TRANSITION.container}
         style={{ zIndex: isCollapsed ? 50 : "auto", willChange: "transform, width, height" }}
-        data-testid={isCollapsed ? "toolbar" : "sidebar"}
+        data-testid={isCollapsed ? "tab-bars" : "sidebar"}
         data-collapsed={isCollapsed}
       >
         <motion.div
@@ -67,23 +67,23 @@ export function NavigationContainer() {
           />
 
           <AnimatePresence mode="wait">
-            {showToolbarContent ? (
+            {showTabBarsContent ? (
               <motion.div
-                key="toolbar"
+                key="tab-bars"
                 initial={{ opacity: 0, scale: 0.96 }}
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.96 }}
                 transition={{
                   opacity: {
-                    duration: MORPH_TRANSITION.toolbarContentEnter.duration,
-                    ease: MORPH_TRANSITION.toolbarContentEnter.ease,
+                    duration: MORPH_TRANSITION.tabBarsContentEnter.duration,
+                    ease: MORPH_TRANSITION.tabBarsContentEnter.ease,
                   },
                   scale: MORPH_TRANSITION.scale,
                 }}
                 className="flex items-center"
                 style={{ gap: 6 }}
               >
-                <ToolbarContent activeItem={activeItem} onItemClick={setActiveItem} onMenuClick={toggleCollapse} />
+                <TabBarsContent activeItem={activeItem} onItemClick={setActiveItem} onMenuClick={toggleCollapse} />
               </motion.div>
             ) : (
               <motion.div
