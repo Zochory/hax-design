@@ -272,6 +272,25 @@
           "target": "types/navigation.ts"
         }
       ]
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "@prompt-input-dynamic-grow",
+      "type": "registry:component",
+      "title": "Prompt Input Dynamic Grow",
+      "description": "A dynamic chat input component with glow effects, ripple animations, expandable width, and menu options. Features auto-resizing textarea and customizable visual effects.",
+      "author": "Haxdesign",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/hax-ui/prompt-input-dynamic-grow/components/ui/prompt-input-dynamic-grow.tsx",
+          "type": "registry:component",
+          "target": "components/ui/prompt-input-dynamic-grow.tsx"
+        }
+      ]
     }
   ]
 }

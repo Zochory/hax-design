@@ -15,21 +15,28 @@ interface ThemeContextType {
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
 export function ThemeProvider({ children }: { children: ReactNode }) {
-  const [theme, setTheme] = useState<Theme>(() => {
+  // Always start with "light" to ensure SSR/client match
+  const [theme, setTheme] = useState<Theme>("light");
+  const [mounted, setMounted] = useState(false);
+
+  // Initialize theme after hydration
+  useEffect(() => {
+    setMounted(true);
     const stored = storage.get<Theme>(STORAGE_KEYS.THEME);
-    if (stored === "light" || stored === "dark") return stored;
-    if (typeof window !== "undefined" && window.matchMedia("(prefers-color-scheme: dark)").matches) {
-      return "dark";
+    if (stored === "light" || stored === "dark") {
+      setTheme(stored);
+    } else if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+      setTheme("dark");
     }
-    return "light";
-  });
+  }, []);
 
   useEffect(() => {
+    if (!mounted) return;
     const root = document.documentElement;
     root.classList.remove("light", "dark");
     root.classList.add(theme);
     storage.set(STORAGE_KEYS.THEME, theme);
-  }, [theme]);
+  }, [theme, mounted]);
 
   const toggleTheme = () => {
     setTheme((prev) => (prev === "light" ? "dark" : "light"));

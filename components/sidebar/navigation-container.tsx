@@ -26,8 +26,11 @@ export function NavigationContainer() {
       willChange: isCollapsed ? "transform, width, height, opacity" : "auto",
       backfaceVisibility: "hidden" as const,
       WebkitFontSmoothing: "antialiased" as const,
+      ...(!isDark && !isCollapsed && {
+        borderRight: "1px solid rgba(0, 0, 0, 0.05)",
+      }),
     }),
-    [isCollapsed],
+    [isCollapsed, isDark],
   )
 
   return (

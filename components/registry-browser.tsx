@@ -1,7 +1,6 @@
 'use client'
 
 import * as React from "react"
-import Link from "next/link"
 import { OpenInV0Button } from "@/components/open-in-v0-button"
 import { getPreviewComponent } from "@/components/preview-map"
 
@@ -33,20 +32,14 @@ function RegistryItemSection({ item, registryBaseUrl }: RegistryItemSectionProps
   return (
     <section className="flex flex-col gap-4 border rounded-lg p-4 relative">
       <div className="flex flex-col gap-1">
-        <div className="flex items-center justify-between flex-wrap gap-3">
-          <div>
-            <h2 className="text-xl font-semibold">{item.name}</h2>
+        <div className="flex flex-row items-center justify-between gap-3">
+          <div className="flex-shrink">
+            <h2 className="text-xl font-semibold min-w-0 truncate">{item.name}</h2>
             <p className="text-sm text-muted-foreground">
               {item.description}
             </p>
           </div>
-          <OpenInV0Button name={item.name} className="w-fit" />
-        </div>
-        <div className="text-sm text-muted-foreground">
-          <span>Registry item JSON:</span>{" "}
-          <Link prefetch={false} href={`/r/${item.name}.json`} className="underline">
-            /r/{item.name}.json
-          </Link>
+          <OpenInV0Button url={`${registryBaseUrl}/${item.name}.json`} />
         </div>
       </div>
 
