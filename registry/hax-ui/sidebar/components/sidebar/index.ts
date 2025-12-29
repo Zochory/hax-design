@@ -1,3 +1,3 @@
 export * from "./navigation-container";
-export * from "./sidebar-2";
+export * from "./sidebar";
 export * from "./tab-bars";
